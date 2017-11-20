@@ -1,26 +1,28 @@
-html,
-body {
-    height: 100%;
+html, body {
+  height: 100%;
+}
+
+.hide {
+    display: none;
 }
 
 .container {
-    height: 100%;
-    width: 100%;
-    display: inline-block;
-    transform: translateY(200px);
+  height: 1000px;
+  width: 1000px;
+  display: inline-block;
 }
 
 .moth {
-	background: black;
-	position: relative;
-    width: 50px;
-    height: 50px;
+  background: black;
+  position: relative;
+  width: 50px;
+  height: 50px;
 }
 
 .bird {
-	pointer-events: none;
-	background: yellow;
-	position: absolute;
-	height: 60px;
-	width: 30px;
+  pointer-events: none;
+  background: yellow;
+  position: absolute;
+  height: 60px;
+  width: 30px;
 }
