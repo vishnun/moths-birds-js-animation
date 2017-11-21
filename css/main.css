@@ -10,6 +10,8 @@ html, body {
   height: 1000px;
   width: 1000px;
   display: inline-block;
+  background: #154a23;
+  /*overflow: hidden;*/
 }
 
 .moth {
@@ -21,7 +23,7 @@ html, body {
 
 .bird {
   pointer-events: none;
-  background: yellow;
+  background: red;
   position: absolute;
   height: 60px;
   width: 30px;

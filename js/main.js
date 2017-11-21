@@ -30,24 +30,117 @@ var Canvas = function(height, width) {
   };
 };
 
-var MothAnimator = function(entrySide, canvas) {
+var MothAnimator = function($moth, entrySide, canvas) {
   var entrySide = entrySide || 'Top';
   var canvas = canvas || new Canvas();
+  var loop = false;
+  var easing = 'linear';
+  var direction = 'normal';
+
+  anime.speed = 2;
+
+  var xPosValid = function(xPos) {
+    return xPos >= 0 && xPos <= canvas.getWidth();
+  };
+
+  var yPosValid = function(yPos) {
+    return yPos >= 0 && yPos <= canvas.getHeight();
+  };
+
+  var addFinishing = function($moth, mothTimeLine) {
+    anime.remove($moth.target);
+  };
 
   var nextPathForTopEntry = function() {
-    console.log("next path for top");
+    console.log("next path for Top");
+    var mothTimeLine = anime.timeline({
+      loop,
+      direction
+    });
+    var xPos = $moth.xPos;
+    var yPos = $moth.yPos;
+    $moth.removeClass('hide');
+
+    while (xPosValid(xPos) && yPos <= canvas.getHeight()) {
+      yPos = yPos + canvas.getHeight() / 4;
+      mothTimeLine.add({
+        delay: 3000,
+        targets: "." + $moth.target,
+        translateY: yPos,
+        translateX: anime.random(-canvas.getWidth() / 3, canvas.getWidth() / 3),
+        easing
+      });
+    }
+    addFinishing($moth, mothTimeLine);
   };
 
   var nextPathForRightEntry = function() {
     console.log("next path for Right");
+    var mothTimeLine = anime.timeline({
+      loop,
+      direction
+    });
+    var xPos = 0;
+    var yPos = $moth.yPos;
+    $moth.removeClass('hide');
+    while (yPosValid(yPos) && xPos >= -canvas.getWidth()) {
+
+      xPos = xPos - canvas.getWidth() / 4;
+      mothTimeLine.add({
+        delay: 3000,
+        targets: "." + $moth.target,
+        translateY: anime.random(-canvas.getHeight() / 3, canvas.getHeight() / 3),
+        translateX: xPos,
+        easing
+      });
+    }
+    addFinishing($moth, mothTimeLine);
   };
 
   var nextPathForBottomEntry = function() {
     console.log("next path for Bottom");
+    var mothTimeLine = anime.timeline({
+      loop,
+      direction
+    });
+    var xPos = $moth.xPos;
+    var yPos = 0;
+    $moth.removeClass('hide');
+    while (yPosValid(xPos) && yPos >= -canvas.getWidth()) {
+
+      yPos = yPos - canvas.getWidth() / 4;
+      mothTimeLine.add({
+        delay: 3000,
+        targets: "." + $moth.target,
+        translateY: yPos,
+        translateX: anime.random(-canvas.getHeight() / 3, canvas.getHeight() / 3),
+        easing
+      });
+    }
+    addFinishing($moth, mothTimeLine);
   };
 
   var nextPathForLeftEntry = function() {
     console.log("next path for Left");
+    var mothTimeLine = anime.timeline({
+      loop,
+      direction
+    });
+    var xPos = $moth.xPos;
+    var yPos = $moth.yPos;
+    $moth.removeClass('hide');
+
+    while (xPosValid(yPos) && xPos <= canvas.getHeight()) {
+      xPos = xPos + canvas.getWidth() / 4;
+      mothTimeLine.add({
+        delay: 3000,
+        targets: "." + $moth.target,
+        translateY: anime.random(-canvas.getWidth() / 3, canvas.getWidth() / 3),
+        translateX: xPos,
+        easing
+      });
+    }
+    addFinishing($moth, mothTimeLine);
   };
 
   var NextPathMapping = {
@@ -74,6 +167,9 @@ var MothAnimator = function(entrySide, canvas) {
       xPos = 0;
     }
 
+    $moth.xPos = xPos;
+    $moth.yPos = yPos;
+
     $moth.css({
       'left': xPos
     });
@@ -98,15 +194,20 @@ var Moth = function(canvas) {
   var self = this;
   var entrySide = sides[Math.floor(Math.random() * sides.length)];
   var canvas = canvas || new Canvas();
-  var animator = new MothAnimator(entrySide, canvas);
-
-  var $el = $("<div class='moth hide'></div>");
-
+  var target = 'moth-' + Math.floor(Math.random() * 50000);
+  var $el = $("<div class='moth " + target + " hide'></div>");
+  $el.target = target;
   canvas.addMoth($el);
+
+
+  $el.on('click', function() {
+    $(this).remove();
+  });
+
+  var animator = new MothAnimator($el, entrySide, canvas);
 
   var enter = function() {
     animator.setInitialPosition($el);
-    $el.removeClass('hide');
     animator.next();
   }
 
@@ -117,17 +218,18 @@ var Moth = function(canvas) {
   };
 };
 
-
 $(function(argument) {
+  var count = 3;
+  var creationInterval = 1000; // millisecond
 
-  var $moth1 = new Moth();
-  $moth1.init();
+  var mothCreator = window.setInterval(function() {
+    var moth = new Moth();
+    moth.init();
+  }, creationInterval);
 
-  var $moth = $('.moth');
-
-  $moth.on('click', function() {
-    $(this).remove();
-  });
+  setTimeout(function() {
+    window.clearInterval(mothCreator);
+  }, count * creationInterval);
 
   $('.container').mousemove(function(e) {
     var y = e.pageY;
@@ -139,48 +241,5 @@ $(function(argument) {
       'left': x - 15
     });
   });
-
-
-  // var loop = false;
-  // var easing = 'linear';
-  // var direction = 'alternate';
-  //
-  // anime({
-  //   targets: '.moth',
-  //   translateX: 470,
-  //   translateY: 100,
-  //   easing,
-  //   loop,
-  //   direction,
-  //   background: [{
-  //     value: '#333333'
-  //   }]
-  // })
-  //
-  // var mothTimeLine = anime.timeline({
-  //   loop,
-  //   direction
-  // });
-  //
-  // mothTimeLine
-  //   .add({
-  //     targets: '.moth',
-  //     translateY: 500,
-  //     translateX: 500,
-  //     easing
-  //   }).add({
-  //     delay: 2000,
-  //     targets: '.moth',
-  //     translateY: '-500',
-  //     translateX: 500,
-  //     easing
-  //   }).add({
-  //     delay: 1000,
-  //     targets: '.moth',
-  //     translateY: '-500',
-  //     translateX: '-500',
-  //     easing
-  //   });
-
 
 });
