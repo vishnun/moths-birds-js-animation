@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Peppered Moths</title>
 	<script type="text/javascript" src="js/lib/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/lib/anime.min.js"></script>
+	<script type="text/javascript" src="js/canvas.js"></script>
+	<script type="text/javascript" src="js/moth_animator.js"></script>
+	<script type="text/javascript" src="js/moth.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body>
-<div id="moth-canvas" class="container">
-</div>
 
-<div class="bird"></div>
+<body>
+	<div class="counts text-center">
+		<p><span class="label">Dark Moths : </span><span class="dark-moth-count">0</span>
+			<span class="label">Light Moths : </span><span class="light-moth-count">0</span></p>
+	</div>
+	<div id="moth-canvas" class="container">
+	</div>
+	<div class="bird"></div>
 </body>
+
 </html>
