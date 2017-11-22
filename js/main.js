@@ -37,7 +37,7 @@ var MothAnimator = function($moth, entrySide, canvas) {
   var easing = 'linear';
   var direction = 'normal';
 
-  anime.speed = 2;
+  anime.speed = 1;
 
   var xPosValid = function(xPos) {
     return xPos >= 0 && xPos <= canvas.getWidth();
@@ -47,15 +47,26 @@ var MothAnimator = function($moth, entrySide, canvas) {
     return yPos >= 0 && yPos <= canvas.getHeight();
   };
 
+  var removeTarget = function (target) {
+    target.remove();
+  };
+
   var addFinishing = function($moth, mothTimeLine) {
-    anime.remove($moth.target);
+    mothTimeLine.add({
+      complete: function(animation) {
+        $moth.remove();
+      }
+    })
   };
 
   var nextPathForTopEntry = function() {
     console.log("next path for Top");
     var mothTimeLine = anime.timeline({
-      loop,
-      direction
+      targets: "." + $moth.target,
+      loop: loop,
+      direction: direction,
+      easing: easing,
+      delay: 3000
     });
     var xPos = $moth.xPos;
     var yPos = $moth.yPos;
@@ -64,11 +75,8 @@ var MothAnimator = function($moth, entrySide, canvas) {
     while (xPosValid(xPos) && yPos <= canvas.getHeight()) {
       yPos = yPos + canvas.getHeight() / 4;
       mothTimeLine.add({
-        delay: 3000,
-        targets: "." + $moth.target,
         translateY: yPos,
         translateX: anime.random(-canvas.getWidth() / 3, canvas.getWidth() / 3),
-        easing
       });
     }
     addFinishing($moth, mothTimeLine);
@@ -77,21 +85,20 @@ var MothAnimator = function($moth, entrySide, canvas) {
   var nextPathForRightEntry = function() {
     console.log("next path for Right");
     var mothTimeLine = anime.timeline({
-      loop,
-      direction
+      targets: "." + $moth.target,
+      loop: loop,
+      direction: direction,
+      easing: easing,
+      delay: 3000
     });
     var xPos = 0;
     var yPos = $moth.yPos;
     $moth.removeClass('hide');
     while (yPosValid(yPos) && xPos >= -canvas.getWidth()) {
-
       xPos = xPos - canvas.getWidth() / 4;
       mothTimeLine.add({
-        delay: 3000,
-        targets: "." + $moth.target,
         translateY: anime.random(-canvas.getHeight() / 3, canvas.getHeight() / 3),
         translateX: xPos,
-        easing
       });
     }
     addFinishing($moth, mothTimeLine);
@@ -100,8 +107,11 @@ var MothAnimator = function($moth, entrySide, canvas) {
   var nextPathForBottomEntry = function() {
     console.log("next path for Bottom");
     var mothTimeLine = anime.timeline({
-      loop,
-      direction
+      targets: "." + $moth.target,
+      loop: loop,
+      direction: direction,
+      easing: easing,
+      delay: 3000
     });
     var xPos = $moth.xPos;
     var yPos = 0;
@@ -110,11 +120,8 @@ var MothAnimator = function($moth, entrySide, canvas) {
 
       yPos = yPos - canvas.getWidth() / 4;
       mothTimeLine.add({
-        delay: 3000,
-        targets: "." + $moth.target,
         translateY: yPos,
         translateX: anime.random(-canvas.getHeight() / 3, canvas.getHeight() / 3),
-        easing
       });
     }
     addFinishing($moth, mothTimeLine);
@@ -123,8 +130,11 @@ var MothAnimator = function($moth, entrySide, canvas) {
   var nextPathForLeftEntry = function() {
     console.log("next path for Left");
     var mothTimeLine = anime.timeline({
-      loop,
-      direction
+      targets: "." + $moth.target,
+      loop: loop,
+      direction: direction,
+      easing: easing,
+      delay: 3000
     });
     var xPos = $moth.xPos;
     var yPos = $moth.yPos;
@@ -133,11 +143,8 @@ var MothAnimator = function($moth, entrySide, canvas) {
     while (xPosValid(yPos) && xPos <= canvas.getHeight()) {
       xPos = xPos + canvas.getWidth() / 4;
       mothTimeLine.add({
-        delay: 3000,
-        targets: "." + $moth.target,
         translateY: anime.random(-canvas.getWidth() / 3, canvas.getWidth() / 3),
         translateX: xPos,
-        easing
       });
     }
     addFinishing($moth, mothTimeLine);
@@ -219,8 +226,8 @@ var Moth = function(canvas) {
 };
 
 $(function(argument) {
-  var count = 3;
-  var creationInterval = 1000; // millisecond
+  var count = 30;
+  var creationInterval = 2000; // millisecond
 
   var mothCreator = window.setInterval(function() {
     var moth = new Moth();
