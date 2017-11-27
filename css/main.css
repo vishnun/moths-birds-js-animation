@@ -1,12 +1,36 @@
 html, body {
   height: 100%;
 }
+
+.btn {
+  height: 35px;
+  width: 97px;
+  border-radius: 8px;
+  font-size: initial;
+}
+
+.primary-btn {
+  background-color: #49eeff;
+}
+
+.danger-btn {
+  background-color: #ff4700;
+}
+
 .label {
   font-size: 16px;
   font-weight: bold;
-  margin: 40px;
-  margin-right: 0;
+  margin: 80px;
+  margin-right: 10px;
 }
+
+.light-label {
+  color: #868686;
+}
+.moth-count {
+  font-size: 30px;
+}
+
 .text-center {
   text-align: center;
 }
@@ -16,10 +40,10 @@ html, body {
 }
 
 .container {
-  margin-left: 20%;
+  margin: auto;
   height: 1000px;
   width: 1000px;
-  display: inline-block;
+  display: block;
   background-image: url('../images/bg.jpg');
   background-size: cover;
   position: relative;
@@ -47,10 +71,10 @@ html, body {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
 .light-moth.flip-vertical {
   background-image: url(../images/light-moth-flipped.png);
 }
-
 
 .bird {
   background-image: url(../images/bird.png);

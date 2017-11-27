@@ -4,6 +4,7 @@ var MothAnimator = function($moth, entrySide, canvas) {
   var loop = false;
   var easing = 'linear';
   var direction = 'normal';
+  var lifeTimeInSec = 20000;
 
   anime.speed = 1;
 
@@ -28,7 +29,9 @@ var MothAnimator = function($moth, entrySide, canvas) {
   var addFinishing = function($moth, mothTimeLine) {
     mothTimeLine.add({
       complete: function(animation) {
-        $moth.remove();
+        setTimeout(function () {
+          $moth.remove();
+        }, lifeTimeInSec);
         updateCounts();
       }
     })

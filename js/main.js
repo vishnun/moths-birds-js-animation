@@ -1,15 +1,32 @@
 $(function(argument) {
+
+  var started = false;
+
   var count = 30;
-  var creationInterval = 2000; // millisecond
+  var creationInterval = 1000; // millisecond
 
-  var mothCreator = window.setInterval(function() {
-    var moth = new Moth();
-    moth.init();
-  }, creationInterval);
+  var mothCreator;
 
-  setTimeout(function() {
+  // Making a copy as there is no time to refactor.
+  // Consolidate from moth and moth-animator files and put in common place.
+  var updateCounts = function() {
+    $('.light-moth-count').text($('.light-moth').length);
+    $('.dark-moth-count').text($('.dark-moth').length);
+  }
+
+
+  $('#start-btn').on('click', function() {
+    updateCounts();
+
+    mothCreator = window.setInterval(function() {
+      var moth = new Moth();
+      moth.init();
+    }, creationInterval);
+  });
+
+  $('#stop-btn').on('click', function() {
     window.clearInterval(mothCreator);
-  }, count * creationInterval);
+  });
 
   $('.container').mousemove(function(e) {
     var y = e.pageY;
