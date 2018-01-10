@@ -17,14 +17,6 @@ var Moth = function(canvas) {
   $el.target = target;
   canvas.addMoth($el);
 
-
-  // Duplicated in moth animator. Needs refactoriing.
-  var updateCounts = function() {
-    $('.light-moth-count').text($('.light-moth').length);
-    $('.dark-moth-count').text($('.dark-moth').length);
-  }
-
-
   $el.on('click', function() {
     updateCounts();
     $(this).remove();
@@ -35,11 +27,25 @@ var Moth = function(canvas) {
   var enter = function() {
     animator.setInitialPosition($el);
     animator.next();
-  }
+  };
+
+  var pause = function() {
+    animator.pause();
+  };
+
+  var play = function() {
+    animator.play();
+  };
 
   return {
     init: function() {
       enter();
+    },
+    pauseAnime: function() {
+      pause();
+    },
+    playAnime: function() {
+      play();
     }
   };
 };

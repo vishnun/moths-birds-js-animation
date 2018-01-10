@@ -20,15 +20,11 @@ var MothAnimator = function($moth, entrySide, canvas) {
     target.remove();
   };
 
-  // Duplicated in moth.js. Needs refactoriing.
-  var updateCounts = function() {
-    $('.light-moth-count').text($('.light-moth').length);
-    $('.dark-moth-count').text($('.dark-moth').length);
-  }
-
   var addFinishing = function($moth, mothTimeLine) {
     mothTimeLine.add({
       complete: function(animation) {
+        // order of completion will be same as order in which they were created. So this should work. 
+        allMothTimeLines.pop();
         setTimeout(function () {
           $moth.remove();
         }, lifeTimeInSec);
@@ -61,6 +57,7 @@ var MothAnimator = function($moth, entrySide, canvas) {
       });
     }
     addFinishing($moth, mothTimeLine);
+    window.allMothTimeLines.push(mothTimeLine);
   };
 
   var nextPathForRightEntry = function() {
@@ -86,6 +83,7 @@ var MothAnimator = function($moth, entrySide, canvas) {
       });
     }
     addFinishing($moth, mothTimeLine);
+    window.allMothTimeLines.push(mothTimeLine);
   };
 
   var nextPathForBottomEntry = function() {
@@ -112,6 +110,7 @@ var MothAnimator = function($moth, entrySide, canvas) {
       });
     }
     addFinishing($moth, mothTimeLine);
+    window.allMothTimeLines.push(mothTimeLine);
   };
 
   var nextPathForLeftEntry = function() {
@@ -138,6 +137,7 @@ var MothAnimator = function($moth, entrySide, canvas) {
       });
     }
     addFinishing($moth, mothTimeLine);
+    window.allMothTimeLines.push(mothTimeLine);
   };
 
   var NextPathMapping = {
@@ -182,6 +182,19 @@ var MothAnimator = function($moth, entrySide, canvas) {
     },
     next: function() {
       NextPathMapping[entrySide].call();
+    },
+    pause: function() {
+      window.allMothTimeLines.forEach(function(mothTimeLine) {
+        if(mothTimeLine) {
+          mothTimeLine.pause()
+        }
+      });
+    },
+
+    play: function() {
+      window.allMothTimeLines.forEach(function(mothTimeLine) {
+        if(mothTimeLine) mothTimeLine.play();
+      });
     }
   };
 };
