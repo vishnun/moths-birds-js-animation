@@ -15,16 +15,24 @@
 </head>
 
 <body>
-	<div class="counts text-center">
-		<div style="margin-bottom: 20px;">
-			<button id="start-btn" class="btn primary-btn" type="button" name="button">Start</button>
-			<button id="stop-btn" class="btn danger-btn" type="button" name="button">Stop</button>
-			<div class="d-inline-block"><span class="label dark=label">Dark Moths population percentage: </span><span class="moth-count dark-moth-count">0</span><span>%</span></div>
-			<div class="d-inline-block"><span class="label light-label">Light Moths population percentage: </span><span class="moth-count light-moth-count">0</span><span>%</span></div>
-			<div class="d-inline-block" style="border-left: 1px solid; margin-left: 10px;"><span class="label light-default">TIME: </span><span class="age">0</span><span> years</span></div>
-		</div>
+	<div class="home">
+		<button id="before-IR-btn" class="btn default-btn" type="button" name="button">Before Industrial Revolution</button>
+		<button id="after-IR-btn" class="btn default-btn" type="button" name="button">After Industrial Revolution</button>
 	</div>
-	<div id="moth-canvas" class="container">
+
+	<div class="moth-simulator hidden">
+		<div class="counts text-center">
+			<div style="margin-bottom: 20px;">
+				<button id="start-btn" class="btn primary-btn" type="button" name="button">Start</button>
+				<button id="stop-btn" class="btn danger-btn" type="button" name="button">Stop</button>
+				<div class="d-inline-block"><span class="label dark=label">Dark Moths population percentage: </span><span class="moth-count dark-moth-count">0</span><span>%</span></div>
+				<div class="d-inline-block"><span class="label light-label">Light Moths population percentage: </span><span class="moth-count light-moth-count">0</span><span>%</span></div>
+				<div class="d-inline-block" style="border-left: 1px solid; margin-left: 10px;"><span class="label light-default">TIME: </span><span class="age">0</span><span> years</span></div>
+				<button id="exit-btn" class="btn default-btn" type="button" name="button">EXIT</button>
+			</div>
+		</div>
+		<div id="moth-canvas" class="container">
+		</div>
 	</div>
 	<div class="bird"></div>
 </body>

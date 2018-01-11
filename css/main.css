@@ -6,9 +6,13 @@ html, body {
 }
 .btn {
   height: 35px;
-  width: 97px;
+  min-width: 97px;
   border-radius: 8px;
   font-size: initial;
+}
+
+.hidden {
+  display: none;
 }
 
 .primary-btn {
