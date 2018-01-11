@@ -9,9 +9,9 @@ var Moth = function(canvas) {
   var flipClass = entrySide == 'Top' ? 'flip-vertical' : '';
 
   if (Math.random() <= 0.5) {
-    $el = $("<div class='dark-moth " + target + " " + flipClass + " hide'></div>");
+    $el = $("<div class='moth dark-moth " + target + " " + flipClass + " hide'></div>");
   } else {
-    $el = $("<div class='light-moth " + target + " " + flipClass + " hide'></div>");
+    $el = $("<div class='moth light-moth " + target + " " + flipClass + " hide'></div>");
   }
 
   $el.target = target;

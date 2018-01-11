@@ -1,7 +1,9 @@
 html, body {
   height: 100%;
 }
-
+.d-inline-block {
+  display: inline-block;
+}
 .btn {
   height: 35px;
   width: 97px;
@@ -20,17 +22,19 @@ html, body {
 .label {
   font-size: 16px;
   font-weight: bold;
-  margin: 80px;
+  margin: auto 20px;
+  display: inline-block;
+  max-width: 160px;
   margin-right: 10px;
+  text-align: left;
 }
 
 .light-label {
   color: #868686;
 }
-.moth-count {
-  font-size: 30px;
+.age, .moth-count {
+  font-size: 25px;
 }
-
 .text-center {
   text-align: center;
 }

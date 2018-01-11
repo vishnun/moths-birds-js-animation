@@ -1,6 +1,19 @@
 function updateCounts() {
-  $('.light-moth-count').text($('.light-moth').length);
-  $('.dark-moth-count').text($('.dark-moth').length);
+  var totalMothCount = $('.moth').length;
+  var lightMothPercentage = 0, darkMothPercentage = 0;
+
+  if(totalMothCount > 0) {
+    lightMothPercentage = 100 * $('.light-moth').length / totalMothCount;
+    darkMothPercentage = 100 * $('.dark-moth').length / totalMothCount;
+  }
+
+  $('.light-moth-count').text(lightMothPercentage.toFixed(0));
+  $('.dark-moth-count').text(darkMothPercentage.toFixed(0));
+}
+
+function updateTime(ageInSeconds) {
+  var age = ageInSeconds/6.0;
+  $('.age').text(age.toFixed(1));
 }
 
 // Should go in Util.js

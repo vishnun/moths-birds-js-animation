@@ -4,7 +4,7 @@ var MothAnimator = function($moth, entrySide, canvas) {
   var loop = false;
   var easing = 'linear';
   var direction = 'normal';
-  var lifeTimeInSec = 20000;
+  var lifeTimeInSec = 2000;
 
   anime.speed = 1;
 
@@ -23,7 +23,7 @@ var MothAnimator = function($moth, entrySide, canvas) {
   var addFinishing = function($moth, mothTimeLine) {
     mothTimeLine.add({
       complete: function(animation) {
-        // order of completion will be same as order in which they were created. So this should work. 
+        // order of completion will be same as order in which they were created. So this should work.
         allMothTimeLines.pop();
         setTimeout(function () {
           $moth.remove();

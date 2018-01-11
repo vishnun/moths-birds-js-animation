@@ -9,18 +9,20 @@
 	<script type="text/javascript" src="js/canvas.js"></script>
 	<script type="text/javascript" src="js/moth_animator.js"></script>
 	<script type="text/javascript" src="js/moth.js"></script>
+	<script type="text/javascript" src="js/moth_app.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>
 	<div class="counts text-center">
-		<div>
+		<div style="margin-bottom: 20px;">
 			<button id="start-btn" class="btn primary-btn" type="button" name="button">Start</button>
 			<button id="stop-btn" class="btn danger-btn" type="button" name="button">Stop</button>
-			<span class="label dark=label">Dark Moths : </span><span class="moth-count dark-moth-count">0</span>
-			<span class="label light-label">Light Moths : </span><span class="moth-count light-moth-count">0</span>
-		</p>
+			<div class="d-inline-block"><span class="label dark=label">Dark Moths population percentage: </span><span class="moth-count dark-moth-count">0</span><span>%</span></div>
+			<div class="d-inline-block"><span class="label light-label">Light Moths population percentage: </span><span class="moth-count light-moth-count">0</span><span>%</span></div>
+			<div class="d-inline-block" style="border-left: 1px solid; margin-left: 10px;"><span class="label light-default">TIME: </span><span class="age">0</span><span> years</span></div>
+		</div>
 	</div>
 	<div id="moth-canvas" class="container">
 	</div>
