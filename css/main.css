@@ -1,9 +1,11 @@
 html, body {
   height: 100%;
 }
+
 .d-inline-block {
   display: inline-block;
 }
+
 .btn {
   height: 35px;
   min-width: 97px;
@@ -36,9 +38,11 @@ html, body {
 .light-label {
   color: #868686;
 }
+
 .age, .moth-count {
   font-size: 25px;
 }
+
 .text-center {
   text-align: center;
 }
@@ -47,15 +51,49 @@ html, body {
   display: none;
 }
 
-.container {
+.home .container {
+  margin: auto;
+  height: 1000px;
+  width: 1500px;
+  display: block;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  background-image: url('../images/home-bg.jpg');
+}
+
+.home .home-actions {
+  position: absolute;
+  bottom: 100px;
+  width: 100%;
+  text-align: center;
+}
+
+.home .home-actions .btn {
+  margin: auto 10%;
+  font-size: 24px;
+  padding: 20px;
+  height: 120px;
+  box-shadow: 2px 2px 8px #444;
+  background-color: #eee;
+}
+
+.home .home-actions .btn:hover {
+  background-color: #fff;
+}
+
+.moth-simulator .container {
   margin: auto;
   height: 1000px;
   width: 1000px;
   display: block;
-  background-image: url('../images/bg.jpg');
   background-size: cover;
   position: relative;
   overflow: hidden;
+}
+
+.moth-simulator .container.before-ir {
+  background-image: url('../images/before-ir-bg.jpg');
 }
 
 .dark-moth {

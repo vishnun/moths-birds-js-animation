@@ -25,6 +25,7 @@ var MothApp = function(beforeIndustrialRevolution) {
 
     $('#exit-btn').on('click', function() {
       $('.moth-simulator').addClass('hidden');
+      $('.home').show();
       reset();
     });
 
@@ -52,15 +53,15 @@ var MothApp = function(beforeIndustrialRevolution) {
       window.paused = true;
     });
 
-    $('.container').mousemove(function(e) {
+    $('.moth-simulator .container').mousemove(function(e) {
       $('.bird').removeClass('hidden');
       var y = e.pageY;
       var x = e.pageX;
       $('.bird').css({
-        'top': y - 10
+        'top': y - 20
       });
       $('.bird').css({
-        'left': x - 15
+        'left': x - 75
       });
     }).mouseout(function(e) {
       $('.bird').addClass('hidden');
