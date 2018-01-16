@@ -92,12 +92,15 @@ html, body {
   overflow: hidden;
 }
 
-.moth-simulator .container.before-ir {
+.before-ir .moth-simulator .container {
   background-image: url('../images/before-ir-bg.jpg');
 }
 
+.after-ir .moth-simulator .container {
+  background-image: url('../images/after-ir-bg.jpg');
+}
+
 .dark-moth {
-  background-image: url(../images/dark-moth.png);
   width: 100px;
   height: 39px;
   position: absolute;
@@ -105,12 +108,23 @@ html, body {
   background-repeat: no-repeat;
 }
 
-.dark-moth.flip-vertical {
-  background-image: url(../images/dark-moth-flipped.png);
+.before-ir .dark-moth {
+  background-image: url('../images/dark-moth.png');
+}
+
+.before-ir .dark-moth.flip-vertical {
+  background-image: url('../images/dark-moth-flipped.png');
+}
+
+.after-ir .dark-moth {
+  background-image: url('../images/dark-moth-after-ir.png');
+}
+
+.after-ir .dark-moth.flip-vertical {
+  background-image: url('../images/dark-moth-after-ir-flipped.png');
 }
 
 .light-moth {
-  background-image: url(../images/light-moth.png);
   width: 100px;
   height: 42px;
   position: absolute;
@@ -118,12 +132,24 @@ html, body {
   background-repeat: no-repeat;
 }
 
-.light-moth.flip-vertical {
-  background-image: url(../images/light-moth-flipped.png);
+.before-ir .light-moth {
+  background-image: url('../images/light-moth.png');
+}
+
+.before-ir .light-moth.flip-vertical {
+  background-image: url('../images/light-moth-flipped.png');
+}
+
+.after-ir .light-moth {
+  background-image: url('../images/light-moth-after-ir.png');
+}
+
+.after-ir .light-moth.flip-vertical {
+  background-image: url('../images/light-moth-after-ir-flipped.png');
 }
 
 .bird {
-  background-image: url(../images/bird.png);
+  background-image: url('../images/bird.png');
   pointer-events: none;
   position: absolute;
   height: 94px;
