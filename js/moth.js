@@ -15,7 +15,7 @@ var Moth = function(canvas) {
   }
 
   $el.target = target;
-  canvas.addMoth($el);
+  canvas.addObj($el);
 
   $el.on('click', function() {
     updateCounts();

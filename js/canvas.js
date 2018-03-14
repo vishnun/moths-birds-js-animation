@@ -3,7 +3,7 @@ var Canvas = function(height, width) {
   self.height = height || 1000;
   self.width = width || 1000;
 
-  var $el = $('#moth-canvas');
+  var $el = $('#moth-birds-canvas');
   var $bird = $('.bird');
 
   $el.mousemove(function(e) {
@@ -18,8 +18,8 @@ var Canvas = function(height, width) {
   });
 
   return {
-    addMoth: function($moth) {
-      $el.append($moth);
+    addObj: function($obj) {
+      $el.append($obj);
     },
     getHeight: function() {
       return self.height;
