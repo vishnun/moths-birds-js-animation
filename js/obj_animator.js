@@ -1,4 +1,4 @@
-var MothAnimator = function($moth, entrySide, canvas) {
+var Animator = function($object, entrySide, canvas) {
   var entrySide = entrySide || 'Top';
   var canvas = canvas || new Canvas();
   var loop = false;
@@ -20,13 +20,13 @@ var MothAnimator = function($moth, entrySide, canvas) {
     target.remove();
   };
 
-  var addFinishing = function($moth, mothTimeLine) {
-    mothTimeLine.add({
+  var addFinishing = function($obj, objTimeLine) {
+    objTimeLine.add({
       complete: function(animation) {
         // order of completion will be same as order in which they were created. So this should work.
-        allMothTimeLines.pop();
+        allObjTimeLines.pop();
         setTimeout(function () {
-          $moth.remove();
+          $obj.remove();
         }, lifeTimeInSec);
         updateCounts();
       }
@@ -35,20 +35,20 @@ var MothAnimator = function($moth, entrySide, canvas) {
 
   var nextPathForTopEntry = function() {
     console.log("next path for Top");
-    var mothTimeLine = anime.timeline({
-      targets: "." + $moth.target,
+    var objTimeLine = anime.timeline({
+      targets: "." + $object.target,
       loop: loop,
       direction: direction,
       easing: easing,
       delay: 3000
     });
-    var xPos = $moth.xPos;
-    var yPos = $moth.yPos;
-    $moth.removeClass('hide');
+    var xPos = $object.xPos;
+    var yPos = $object.yPos;
+    $object.removeClass('hide');
 
     while (xPosValid(xPos) && yPos <= canvas.getHeight()) {
       yPos = yPos + canvas.getHeight() / 4;
-      mothTimeLine.add({
+      objTimeLine.add({
         translateY: yPos,
         translateX: anime.random(-canvas.getWidth() / 3, canvas.getWidth() / 3),
         complete: function(animation) {
@@ -56,25 +56,25 @@ var MothAnimator = function($moth, entrySide, canvas) {
         }
       });
     }
-    addFinishing($moth, mothTimeLine);
-    window.allMothTimeLines.push(mothTimeLine);
+    addFinishing($object, objTimeLine);
+    window.allObjTimeLines.push(objTimeLine);
   };
 
   var nextPathForRightEntry = function() {
     console.log("next path for Right");
-    var mothTimeLine = anime.timeline({
-      targets: "." + $moth.target,
+    var objTimeLine = anime.timeline({
+      targets: "." + $object.target,
       loop: loop,
       direction: direction,
       easing: easing,
       delay: 3000
     });
     var xPos = 0;
-    var yPos = $moth.yPos;
-    $moth.removeClass('hide');
+    var yPos = $object.yPos;
+    $object.removeClass('hide');
     while (yPosValid(yPos) && xPos >= -canvas.getWidth()) {
       xPos = xPos - canvas.getWidth() / 4;
-      mothTimeLine.add({
+      objTimeLine.add({
         translateY: anime.random(-canvas.getHeight() / 3, canvas.getHeight() / 3),
         translateX: xPos,
         complete: function(animation) {
@@ -82,26 +82,26 @@ var MothAnimator = function($moth, entrySide, canvas) {
         }
       });
     }
-    addFinishing($moth, mothTimeLine);
-    window.allMothTimeLines.push(mothTimeLine);
+    addFinishing($object, objTimeLine);
+    window.allObjTimeLines.push(objTimeLine);
   };
 
   var nextPathForBottomEntry = function() {
     console.log("next path for Bottom");
-    var mothTimeLine = anime.timeline({
-      targets: "." + $moth.target,
+    var objTimeLine = anime.timeline({
+      targets: "." + $object.target,
       loop: loop,
       direction: direction,
       easing: easing,
       delay: 3000
     });
-    var xPos = $moth.xPos;
+    var xPos = $object.xPos;
     var yPos = 0;
-    $moth.removeClass('hide');
+    $object.removeClass('hide');
     while (yPosValid(xPos) && yPos >= -canvas.getWidth()) {
 
       yPos = yPos - canvas.getWidth() / 4;
-      mothTimeLine.add({
+      objTimeLine.add({
         translateY: yPos,
         translateX: anime.random(-canvas.getHeight() / 3, canvas.getHeight() / 3),
         complete: function(animation) {
@@ -109,26 +109,26 @@ var MothAnimator = function($moth, entrySide, canvas) {
         }
       });
     }
-    addFinishing($moth, mothTimeLine);
-    window.allMothTimeLines.push(mothTimeLine);
+    addFinishing($object, objTimeLine);
+    window.allObjTimeLines.push(objTimeLine);
   };
 
   var nextPathForLeftEntry = function() {
     console.log("next path for Left");
-    var mothTimeLine = anime.timeline({
-      targets: "." + $moth.target,
+    var objTimeLine = anime.timeline({
+      targets: "." + $object.target,
       loop: loop,
       direction: direction,
       easing: easing,
       delay: 3000
     });
-    var xPos = $moth.xPos;
-    var yPos = $moth.yPos;
-    $moth.removeClass('hide');
+    var xPos = $object.xPos;
+    var yPos = $object.yPos;
+    $object.removeClass('hide');
 
     while (xPosValid(yPos) && xPos <= canvas.getHeight()) {
       xPos = xPos + canvas.getWidth() / 4;
-      mothTimeLine.add({
+      objTimeLine.add({
         translateY: anime.random(-canvas.getWidth() / 3, canvas.getWidth() / 3),
         translateX: xPos,
         complete: function(animation) {
@@ -136,8 +136,8 @@ var MothAnimator = function($moth, entrySide, canvas) {
         }
       });
     }
-    addFinishing($moth, mothTimeLine);
-    window.allMothTimeLines.push(mothTimeLine);
+    addFinishing($object, objTimeLine);
+    window.allObjTimeLines.push(objTimeLine);
   };
 
   var NextPathMapping = {
@@ -147,7 +147,7 @@ var MothAnimator = function($moth, entrySide, canvas) {
     'Left': nextPathForLeftEntry
   };
 
-  var setInitialPositionFor = function($moth) {
+  var setInitialPositionFor = function($obj) {
     var yPos = 0,
       xPos = 0;
     if (entrySide == 'Top') {
@@ -164,36 +164,36 @@ var MothAnimator = function($moth, entrySide, canvas) {
       xPos = 0;
     }
 
-    $moth.xPos = xPos;
-    $moth.yPos = yPos;
+    $obj.xPos = xPos;
+    $obj.yPos = yPos;
 
-    $moth.css({
+    $obj.css({
       'left': xPos
     });
 
-    $moth.css({
+    $obj.css({
       'top': yPos
     });
   };
 
   return {
-    setInitialPosition: function($moth) {
-      setInitialPositionFor($moth);
+    setInitialPosition: function($obj) {
+      setInitialPositionFor($obj);
     },
     next: function() {
       NextPathMapping[entrySide].call();
     },
     pause: function() {
-      window.allMothTimeLines.forEach(function(mothTimeLine) {
-        if(mothTimeLine) {
-          mothTimeLine.pause()
+      window.allObjTimeLines.forEach(function(objTimeLine) {
+        if(objTimeLine) {
+          objTimeLine.pause()
         }
       });
     },
 
     play: function() {
-      window.allMothTimeLines.forEach(function(mothTimeLine) {
-        if(mothTimeLine) mothTimeLine.play();
+      window.allObjTimeLines.forEach(function(objTimeLine) {
+        if(objTimeLine) objTimeLine.play();
       });
     }
   };

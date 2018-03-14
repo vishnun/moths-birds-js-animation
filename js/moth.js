@@ -22,7 +22,7 @@ var Moth = function(canvas) {
     $(this).remove();
   });
 
-  var animator = new MothAnimator($el, entrySide, canvas);
+  var animator = new Animator($el, entrySide, canvas);
 
   var enter = function() {
     animator.setInitialPosition($el);

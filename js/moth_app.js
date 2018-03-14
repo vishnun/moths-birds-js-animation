@@ -8,7 +8,7 @@ var MothApp = function (beforeIndustrialRevolution) {
   }
 
   function reset() {
-    window.allMothTimeLines = [];
+    window.allObjTimeLines = [];
     window.paused = false;
     window.timeInSeconds = 0;
     updateTime(0);
