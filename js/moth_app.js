@@ -1,5 +1,5 @@
-var MothApp = function(beforeIndustrialRevolution) {
-  beforeIndustrialRevolution = beforeIndustrialRevolution == undefined ? True : beforeIndustrialRevolution;
+var MothApp = function (beforeIndustrialRevolution) {
+  beforeIndustrialRevolution = beforeIndustrialRevolution == undefined ? true : beforeIndustrialRevolution;
 
 
   function resetMoths() {
@@ -20,23 +20,24 @@ var MothApp = function(beforeIndustrialRevolution) {
     var moth;
     var mothCreator;
     var timer;
+    var $bird = $('.bird');
 
     reset();
 
-    $('#exit-btn').on('click', function() {
+    $('#exit-btn').on('click', function () {
       $('.moth-simulator').addClass('hidden');
       $('.home').show();
       reset();
     });
 
-    $('#start-btn').on('click', function() {
+    $('#start-btn').on('click', function () {
       updateCounts();
 
-      timer = window.setInterval(function() {
+      timer = window.setInterval(function () {
         updateTime(window.timeInSeconds += 1);
       }, 1000);
 
-      mothCreator = window.setInterval(function() {
+      mothCreator = window.setInterval(function () {
         moth = new Moth();
         moth.init();
         if (window.paused) {
@@ -46,25 +47,25 @@ var MothApp = function(beforeIndustrialRevolution) {
       }, creationInterval);
     });
 
-    $('#stop-btn').on('click', function() {
+    $('#stop-btn').on('click', function () {
       window.clearInterval(mothCreator);
       window.clearInterval(timer);
       moth.pauseAnime();
       window.paused = true;
     });
 
-    $('.moth-simulator .container').mousemove(function(e) {
-      $('.bird').removeClass('hidden');
+    $('.moth-simulator .container').mousemove(function (e) {
+      $bird.removeClass('hidden');
       var y = e.pageY;
       var x = e.pageX;
-      $('.bird').css({
+      $bird.css({
         'top': y - 20
       });
-      $('.bird').css({
+      $bird.css({
         'left': x - 75
       });
-    }).mouseout(function(e) {
-      $('.bird').addClass('hidden');
+    }).mouseout(function (e) {
+      $bird.addClass('hidden');
     });
   }
 
@@ -73,4 +74,4 @@ var MothApp = function(beforeIndustrialRevolution) {
     reset: reset
   };
 
-}
+};
