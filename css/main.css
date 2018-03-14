@@ -108,6 +108,15 @@ html, body {
   background-repeat: no-repeat;
 }
 
+.birdie {
+  background-image: url('../images/bird.png');
+  pointer-events: none;
+  position: absolute;
+  height: 94px;
+  width: 151px;
+  background-size: contain;
+}
+
 .before-ir .dark-moth {
   background-image: url('../images/dark-moth.png');
 }

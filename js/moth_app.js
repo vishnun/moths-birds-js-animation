@@ -17,8 +17,8 @@ var MothApp = function (beforeIndustrialRevolution) {
 
   function init() {
     var creationInterval = 1000; // millisecond
-    var moth;
-    var mothCreator;
+    var moth, bird;
+    var mothCreator, birdCreator;
     var timer;
     var $bird = $('.bird');
 
@@ -45,10 +45,21 @@ var MothApp = function (beforeIndustrialRevolution) {
           window.paused = false;
         }
       }, creationInterval);
+
+      birdCreator = window.setInterval(function () {
+        bird = new Bird();
+        bird.init();
+        if (window.paused) {
+          bird.playAnime();
+          window.paused = false;
+        }
+      }, creationInterval * 3);
+
     });
 
     $('#stop-btn').on('click', function () {
       window.clearInterval(mothCreator);
+      window.clearInterval(birdCreator);
       window.clearInterval(timer);
       moth.pauseAnime();
       window.paused = true;
