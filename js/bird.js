@@ -13,12 +13,7 @@ var Bird = function(canvas) {
   $el.target = target;
   canvas.addObj($el);
 
-  $el.on('click', function() {
-    updateCounts();
-    $(this).remove();
-  });
-
-  var animator = new Animator($el, entrySide, canvas);
+  var animator = new Animator($el, entrySide, canvas, getBirdCallbacks());
 
   var enter = function() {
     animator.setInitialPosition($el);

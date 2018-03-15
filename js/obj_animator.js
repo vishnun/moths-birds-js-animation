@@ -1,4 +1,4 @@
-var Animator = function($object, entrySide, canvas) {
+var Animator = function($object, entrySide, canvas, callbacks) {
   var entrySide = entrySide || 'Top';
   var canvas = canvas || new Canvas();
   var loop = false;
@@ -40,7 +40,12 @@ var Animator = function($object, entrySide, canvas) {
       loop: loop,
       direction: direction,
       easing: easing,
-      delay: 3000
+      delay: 3000,
+      run: function(anim) {
+        if(callbacks && callbacks.runCallback){
+          callbacks.runCallback($object.target, anim);
+        }
+      }
     });
     var xPos = $object.xPos;
     var yPos = $object.yPos;

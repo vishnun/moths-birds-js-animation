@@ -1,4 +1,4 @@
-var Moth = function(canvas) {
+var Moth = function (canvas) {
   var sides = ['Top', 'Right', 'Left', 'Bottom'];
   var self = this;
   var entrySide = sides[Math.floor(Math.random() * sides.length)];
@@ -17,34 +17,35 @@ var Moth = function(canvas) {
   $el.target = target;
   canvas.addObj($el);
 
-  $el.on('click', function() {
+  $el.on('click', function () {
     updateCounts();
     $(this).remove();
   });
 
-  var animator = new Animator($el, entrySide, canvas);
 
-  var enter = function() {
+  var animator = new Animator($el, entrySide, canvas, getMothCallbacks());
+
+  var enter = function () {
     animator.setInitialPosition($el);
     animator.next();
   };
 
-  var pause = function() {
+  var pause = function () {
     animator.pause();
   };
 
-  var play = function() {
+  var play = function () {
     animator.play();
   };
 
   return {
-    init: function() {
+    init: function () {
       enter();
     },
-    pauseAnime: function() {
+    pauseAnime: function () {
       pause();
     },
-    playAnime: function() {
+    playAnime: function () {
       play();
     }
   };
