@@ -92,12 +92,35 @@ html, body {
   overflow: hidden;
 }
 
-.before-ir .moth-simulator .container {
+/*.before-ir .moth-simulator .container {*/
+  /*background-image: url('../images/before-ir-bg.jpg');*/
+/*}*/
+
+/*.after-ir .moth-simulator .container {*/
+  /*background-image: url('../images/after-ir-bg.jpg');*/
+/*}*/
+
+.bg {
+  z-index: 1;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.before-ir-bg {
+  opacity: 0.9;
   background-image: url('../images/before-ir-bg.jpg');
 }
 
-.after-ir .moth-simulator .container {
+.after-ir-bg {
   background-image: url('../images/after-ir-bg.jpg');
+}
+
+.moth {
+  z-index: 10;
+}
+
+.birdie {
+  z-index: 20;
 }
 
 .dark-moth {
