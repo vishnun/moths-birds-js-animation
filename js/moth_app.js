@@ -24,6 +24,12 @@ var MothApp = function (beforeIndustrialRevolution) {
 
     reset();
 
+
+    $('#ir-range').on('input', function () {
+      var rangeEl = $(this);
+      $('.after-ir-bg').css('opacity', rangeEl.val());
+    });
+
     $('#exit-btn').on('click', function () {
       $('.moth-simulator').addClass('hidden');
       $('.home').show();

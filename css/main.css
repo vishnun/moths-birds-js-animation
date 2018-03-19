@@ -107,14 +107,25 @@ html, body {
   width: 100%;
 }
 .before-ir-bg {
-  opacity: 0.9;
   background-image: url('../images/before-ir-bg.jpg');
 }
 
 .after-ir-bg {
+  opacity: 0;
   background-image: url('../images/after-ir-bg.jpg');
 }
+.range-container {
+  margin-top: 20px;
+}
 
+.range-container .ir-range {
+  width: 250px;
+}
+
+.range-container p {
+  margin-top: 5px;
+  font-size: 24px;
+}
 .moth {
   z-index: 10;
 }
