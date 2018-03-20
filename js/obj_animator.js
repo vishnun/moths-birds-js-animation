@@ -34,7 +34,7 @@ var Animator = function($object, entrySide, canvas, callbacks) {
   };
 
   var nextPathForTopEntry = function() {
-    console.log("next path for Top");
+    // console.log("next path for Top");
     var objTimeLine = anime.timeline({
       targets: "." + $object.target,
       loop: loop,
@@ -66,7 +66,7 @@ var Animator = function($object, entrySide, canvas, callbacks) {
   };
 
   var nextPathForRightEntry = function() {
-    console.log("next path for Right");
+    // console.log("next path for Right");
     var objTimeLine = anime.timeline({
       targets: "." + $object.target,
       loop: loop,
@@ -92,7 +92,7 @@ var Animator = function($object, entrySide, canvas, callbacks) {
   };
 
   var nextPathForBottomEntry = function() {
-    console.log("next path for Bottom");
+    // console.log("next path for Bottom");
     var objTimeLine = anime.timeline({
       targets: "." + $object.target,
       loop: loop,
@@ -119,7 +119,7 @@ var Animator = function($object, entrySide, canvas, callbacks) {
   };
 
   var nextPathForLeftEntry = function() {
-    console.log("next path for Left");
+    // console.log("next path for Left");
     var objTimeLine = anime.timeline({
       targets: "." + $object.target,
       loop: loop,
