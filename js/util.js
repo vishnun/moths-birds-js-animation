@@ -9,6 +9,8 @@ function updateCounts() {
 
   $('.light-moth-count').text(lightMothPercentage.toFixed(0));
   $('.dark-moth-count').text(darkMothPercentage.toFixed(0));
+
+  window.plotter.update({'lightMoths': lightMothPercentage.toFixed(0), 'darkMoths': darkMothPercentage.toFixed(0)});
 }
 
 function updateTime(ageInSeconds) {

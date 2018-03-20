@@ -3,15 +3,6 @@
 
 <head>
     <title>Peppered Moths</title>
-    <script type="text/javascript" src="js/lib/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/lib/anime.min.js"></script>
-    <script type="text/javascript" src="js/util.js"></script>
-    <script type="text/javascript" src="js/canvas.js"></script>
-    <script type="text/javascript" src="js/obj_animator.js"></script>
-    <script type="text/javascript" src="js/moth.js"></script>
-    <script type="text/javascript" src="js/bird.js"></script>
-    <script type="text/javascript" src="js/moth_app.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
@@ -19,7 +10,9 @@
 <div class="home">
     <div class="container">
         <div class="home-actions">
-            <button id="before-IR-btn" class="btn default-btn" style="min-width: 200px; font-size: 34px;" type="button" name="button">Start</button>
+            <button id="before-IR-btn" class="btn default-btn" style="min-width: 200px; font-size: 34px;" type="button"
+                    name="button">Start
+            </button>
             <!--<button id="after-IR-btn" class="btn default-btn" type="button" name="button">After Industrial Revolution-->
             <!--</button>-->
         </div>
@@ -50,7 +43,26 @@
         <input type="range" id="ir-range" min="0" max="1" step="0.1" value="0">
         <p>Slide through to simulate industrial revolution change from before to after industrial revolution.</p>
     </div>
+    <div class="text-center">
+        <div id="chartContainer" style="height: 370px; width:100%;"></div>
+    </div>
 </div>
+
+
+<script type="text/javascript" src="js/lib/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/lib/anime.min.js"></script>
+<script defer src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<script type="text/javascript" src="js/chart-plotter.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/canvas.js"></script>
+<script type="text/javascript" src="js/obj_animator.js"></script>
+<script type="text/javascript" src="js/moth.js"></script>
+<script type="text/javascript" src="js/bird.js"></script>
+<script type="text/javascript" src="js/moth_app.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+
 </body>
 
 </html>

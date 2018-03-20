@@ -22,6 +22,9 @@ var MothApp = function (beforeIndustrialRevolution) {
     var timer;
     var $bird = $('.bird');
 
+    // Used in update counts to update the chart.
+    window.plotter = new ChartPlotter();
+
     reset();
 
 
