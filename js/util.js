@@ -27,7 +27,7 @@ function getMothCallbacks() {
     runCallback: function (mothEl) {
       var birds = $('.birdie').not('.hide');
       var $moth = $("." + mothEl);
-      if ($moth.length == 0) {
+      if ($moth.length == 0 || !shouldMothBeEaten($moth)) {
         return;
       }
       var rect1 = $moth[0].getBoundingClientRect();
@@ -48,10 +48,33 @@ function getMothCallbacks() {
   return callbacks;
 }
 
+function shouldMothBeEaten(moth) {
+  var prob = Math.random(), limit = 0.9;
+  var beforeIR = $('#ir-range').val() < 0.5;
+
+  var shouldEatIt = false;
+
+  if (beforeIR) {
+    if (prob <= limit && $(moth).hasClass('dark-moth')) {
+      shouldEatIt = true;
+    }
+    if (prob > limit && $(moth).hasClass('light-moth')) {
+      shouldEatIt = true;
+    }
+  } else {
+    if (prob >= limit && $(moth).hasClass('dark-moth')) {
+      shouldEatIt = true;
+    }
+    if (prob < limit && $(moth).hasClass('light-moth')) {
+      shouldEatIt = true;
+    }
+  }
+  return shouldEatIt;
+}
 function getBirdCallbacks() {
   var callbacks = {
     runCallback: function (birdEl) {
-      var moths = $('.moth.dark-moth').not('.hide');
+      var moths = $('.moth').not('.hide');
       var bird = $("." + birdEl);
       if (bird.length == 0) {
         return;
@@ -60,7 +83,9 @@ function getBirdCallbacks() {
       moths.toArray().forEach(function (moth) {
         var rect2 = moth.getBoundingClientRect();
         var overlap = !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom);
-        if (overlap) {
+        var shouldEatIt = shouldMothBeEaten(moth);
+
+        if (overlap && shouldEatIt) {
           $(moth).toggle({
             effect: 'scale',
             complete: function () {
