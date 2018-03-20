@@ -16,7 +16,7 @@ var MothApp = function (beforeIndustrialRevolution) {
   }
 
   function init() {
-    var creationInterval = 1000; // millisecond
+    var creationInterval = 200; // millisecond
     var moth, bird;
     var mothCreator, birdCreator;
     var timer;
@@ -58,7 +58,7 @@ var MothApp = function (beforeIndustrialRevolution) {
         if (!window.paused) {
           bird.playAnime();
         }
-      }, creationInterval * 3);
+      }, creationInterval * 8);
 
     });
 
