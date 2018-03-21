@@ -1,27 +1,39 @@
 var MothApp = function (beforeIndustrialRevolution) {
   beforeIndustrialRevolution = beforeIndustrialRevolution == undefined ? true : beforeIndustrialRevolution;
-
+  var creationInterval = 200; // millisecond
+  var mothCreator, birdCreator;
+  var timer;
+  var $bird = $('.bird');
 
   function resetMoths() {
     $('.moth').remove();
     updateCounts();
   }
 
+  function resetBirds() {
+    $('.birdie').remove();
+    updateCounts();
+  }
+
   function reset() {
     window.allObjTimeLines = [];
-    window.paused = false;
+    window.paused = true;
     window.timeInSeconds = 0;
+
+    window.clearInterval(mothCreator);
+    window.clearInterval(birdCreator);
+    window.clearInterval(timer);
+
+    plotter.reset();
+
     updateTime(0);
     resetMoths();
+    resetBirds();
   }
 
   function init() {
-    var creationInterval = 200; // millisecond
-    var moth, bird;
-    var mothCreator, birdCreator;
-    var timer;
-    var $bird = $('.bird');
 
+    var moth, bird;
     // Used in update counts to update the chart.
     window.plotter = new ChartPlotter();
 

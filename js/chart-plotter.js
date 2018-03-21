@@ -54,6 +54,9 @@ function ChartPlotter() {
   };
 
   return {
+    reset: function () {
+      chart.destroy();
+    },
     update: updateChart
   }
 }
