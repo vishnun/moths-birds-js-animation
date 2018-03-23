@@ -80,8 +80,9 @@ function shouldMothBeEaten(moth) {
 
   return shouldEatIt;
 }
+
 function getBirdCallbacks() {
-  var callbacks = {
+  return {
     runCallback: function (birdEl) {
       var moths = $('.moth').not('.hide');
       var bird = $("." + birdEl);
@@ -105,5 +106,4 @@ function getBirdCallbacks() {
       });
     }
   };
-  return callbacks;
 }
