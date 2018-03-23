@@ -6,11 +6,21 @@ html, body {
   display: inline-block;
 }
 
+.clearfix:before,
+.clearfix:after {
+  display: block;
+  content: '';
+  height: 0;
+  width: 100%;
+  clear: both;
+}
+
 .btn {
   height: 35px;
   min-width: 97px;
   border-radius: 8px;
   font-size: initial;
+  margin-top: 20px;
 }
 
 .hidden {
@@ -21,26 +31,41 @@ html, body {
   background-color: #49eeff;
 }
 
+.primary-btn:hover {
+  background-color: #00d3e8;
+}
+
 .danger-btn {
-  background-color: #ff4700;
+  background-color: #ff2c2c;
+  color: white;
+}
+
+.danger-btn:hover {
+  background-color: red;
+}
+
+.default-btn:hover {
+  background-color: #efefef;
+}
+
+.count-block {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-top: 1px solid #ccc;
 }
 
 .label {
-  font-size: 16px;
-  font-weight: bold;
-  margin: auto 20px;
-  display: inline-block;
-  max-width: 160px;
-  margin-right: 10px;
+  font-size: 20px;
+  margin: 20px;
   text-align: left;
 }
 
-.light-label {
+.light-label, .light-moth-count {
   color: #868686;
 }
 
 .age, .moth-count {
-  font-size: 25px;
+  font-size: 100px;
 }
 
 .text-center {
@@ -93,11 +118,11 @@ html, body {
 }
 
 /*.before-ir .moth-simulator .container {*/
-  /*background-image: url('../images/before-ir-bg.jpg');*/
+/*background-image: url('../images/before-ir-bg.jpg');*/
 /*}*/
 
 /*.after-ir .moth-simulator .container {*/
-  /*background-image: url('../images/after-ir-bg.jpg');*/
+/*background-image: url('../images/after-ir-bg.jpg');*/
 /*}*/
 
 .bg {
@@ -106,6 +131,7 @@ html, body {
   position: absolute;
   width: 100%;
 }
+
 .before-ir-bg {
   background-image: url('../images/before-ir-bg.jpg');
 }
@@ -114,18 +140,40 @@ html, body {
   opacity: 0;
   background-image: url('../images/after-ir-bg.jpg');
 }
+
 .range-container {
-  margin-top: 20px;
+  padding-bottom: 20px;
 }
 
-.range-container .ir-range {
-  width: 250px;
+.range-container .range-field {
+  position: relative;
+  padding-left: 75px;
+  padding-right: 75px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.range-container .left-label {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+}
+
+.range-container .right-label {
+  position: absolute;
+  bottom: 5px;
+  right: 0;
+}
+
+.range-container #ir-range {
+  width: 100%;
 }
 
 .range-container p {
   margin-top: 5px;
   font-size: 24px;
 }
+
 .moth {
   z-index: 10;
 }
@@ -198,4 +246,13 @@ html, body {
   height: 94px;
   width: 151px;
   background-size: contain;
+}
+
+.side-panel {
+  float: left;
+  max-width: 400px;
+}
+
+.bg-container {
+  float: left;
 }

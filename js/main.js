@@ -22,6 +22,10 @@ $(function (argument) {
     initiateMothApp(beforeIndustrialRevolution);
   });
 
+  $('#show-chart').on('click', function () {
+    $('#chartContainer').toggleClass('hidden');
+  });
+
   $('#after-IR-btn').on('click', function () {
     beforeIndustrialRevolution = false;
     initiateMothApp(beforeIndustrialRevolution);
