@@ -54,8 +54,11 @@ function mothEatingThreshold() {
 
   var irRangeVal = $('#ir-range').val();
 
-  if (irRangeVal < 0.3 || irRangeVal > 0.7) {
-    return 0.9
+  if (irRangeVal < 0.3) {
+    return 0.1;
+  }
+  else if (irRangeVal > 0.7) {
+    return 0.9;
   }
 
   return irRangeVal;
