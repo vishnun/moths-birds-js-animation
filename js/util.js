@@ -50,27 +50,31 @@ function getMothCallbacks() {
   return callbacks;
 }
 
+function mothEatingThreshold() {
+
+  var irRangeVal = $('#ir-range').val();
+
+  if (irRangeVal < 0.3 || irRangeVal > 0.7) {
+    return 0.9
+  }
+
+  return irRangeVal;
+
+}
+
 function shouldMothBeEaten(moth) {
-  var prob = Math.random(), limit = 0.9;
-  var beforeIR = $('#ir-range').val() < 0.5;
+  var prob = Math.random();
+  var threshold = mothEatingThreshold();
 
   var shouldEatIt = false;
 
-  if (beforeIR) {
-    if (prob <= limit && $(moth).hasClass('dark-moth')) {
-      shouldEatIt = true;
-    }
-    if (prob > limit && $(moth).hasClass('light-moth')) {
-      shouldEatIt = true;
-    }
-  } else {
-    if (prob >= limit && $(moth).hasClass('dark-moth')) {
-      shouldEatIt = true;
-    }
-    if (prob < limit && $(moth).hasClass('light-moth')) {
-      shouldEatIt = true;
-    }
+  if (prob >= threshold && $(moth).hasClass('dark-moth')) {
+    shouldEatIt = true;
   }
+  if (prob < threshold && $(moth).hasClass('light-moth')) {
+    shouldEatIt = true;
+  }
+
   return shouldEatIt;
 }
 function getBirdCallbacks() {
