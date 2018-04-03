@@ -50,8 +50,7 @@ function getMothCallbacks() {
   return callbacks;
 }
 
-function mothEatingThreshold() {
-
+function thresholdUsingRange() {
   var irRangeVal = $('#ir-range').val();
 
   if (irRangeVal < 0.3) {
@@ -62,7 +61,20 @@ function mothEatingThreshold() {
   }
 
   return irRangeVal;
+}
 
+function thresholdUsingSwitch() {
+  if ($('#ir-switch').prop('checked') == true) {
+    return 0.95;
+  }
+  return 0.05;
+}
+
+function mothEatingThreshold() {
+  if ($('.range-field').css('display') == 'none') {
+    return thresholdUsingSwitch();
+  }
+  return thresholdUsingRange();
 }
 
 function shouldMothBeEaten(moth) {

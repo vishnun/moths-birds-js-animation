@@ -45,6 +45,14 @@ var MothApp = function (beforeIndustrialRevolution) {
       $('.after-ir-bg').css('opacity', rangeEl.val());
     });
 
+    $('#ir-switch').on('change', function () {
+      if ($(this).prop('checked') == true) {
+        $('.after-ir-bg').css('opacity', 1);
+      } else {
+        $('.after-ir-bg').css('opacity', 0);
+      }
+    });
+
     $('#exit-btn').on('click', function () {
       $('.moth-simulator').addClass('hidden');
       $('.home').show();
