@@ -8,7 +8,9 @@ var Moth = function (canvas) {
 
   var flipClass = entrySide == 'Top' ? 'flip-vertical' : '';
 
-  if (Math.random() <= 0.5) {
+  var probabilityForDarkMoth = isAfterIR() ? 0.7 : 0.3;
+
+  if (Math.random() <= probabilityForDarkMoth) {
     $el = $("<div class='moth dark-moth " + target + " " + flipClass + " hide'></div>");
   } else {
     $el = $("<div class='moth light-moth " + target + " " + flipClass + " hide'></div>");

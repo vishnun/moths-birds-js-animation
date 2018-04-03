@@ -46,7 +46,7 @@ var MothApp = function (beforeIndustrialRevolution) {
     });
 
     $('#ir-switch').on('change', function () {
-      if ($(this).prop('checked') == true) {
+      if (isAfterIR()) {
         $('.after-ir-bg').css('opacity', 1);
       } else {
         $('.after-ir-bg').css('opacity', 0);

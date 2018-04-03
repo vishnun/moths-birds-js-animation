@@ -63,8 +63,12 @@ function thresholdUsingRange() {
   return irRangeVal;
 }
 
+function isAfterIR() {
+  return $('#ir-switch').prop('checked') == true;
+}
+
 function thresholdUsingSwitch() {
-  if ($('#ir-switch').prop('checked') == true) {
+  if (isAfterIR()) {
     return 0.95;
   }
   return 0.05;
