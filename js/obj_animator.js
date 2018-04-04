@@ -72,7 +72,12 @@ var Animator = function($object, entrySide, canvas, callbacks) {
       loop: loop,
       direction: direction,
       easing: easing,
-      delay: 3000
+      delay: 3000,
+      run: function(anim) {
+        if(callbacks && callbacks.runCallback){
+          callbacks.runCallback($object.target, anim);
+        }
+      }
     });
     var xPos = 0;
     var yPos = $object.yPos;
@@ -98,7 +103,12 @@ var Animator = function($object, entrySide, canvas, callbacks) {
       loop: loop,
       direction: direction,
       easing: easing,
-      delay: 3000
+      delay: 3000,
+      run: function(anim) {
+        if(callbacks && callbacks.runCallback){
+          callbacks.runCallback($object.target, anim);
+        }
+      }
     });
     var xPos = $object.xPos;
     var yPos = 0;
@@ -125,7 +135,12 @@ var Animator = function($object, entrySide, canvas, callbacks) {
       loop: loop,
       direction: direction,
       easing: easing,
-      delay: 3000
+      delay: 3000,
+      run: function(anim) {
+        if(callbacks && callbacks.runCallback){
+          callbacks.runCallback($object.target, anim);
+        }
+      }
     });
     var xPos = $object.xPos;
     var yPos = $object.yPos;
