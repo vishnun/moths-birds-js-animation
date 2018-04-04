@@ -1,4 +1,4 @@
-var Animator = function($object, entrySide, canvas, callbacks) {
+var Animator = function ($object, entrySide, canvas, callbacks) {
   var entrySide = entrySide || 'Top';
   var canvas = canvas || new Canvas();
   var loop = false;
@@ -8,11 +8,11 @@ var Animator = function($object, entrySide, canvas, callbacks) {
 
   anime.speed = 1;
 
-  var xPosValid = function(xPos) {
+  var xPosValid = function (xPos) {
     return xPos >= 0 && xPos <= canvas.getWidth();
   };
 
-  var yPosValid = function(yPos) {
+  var yPosValid = function (yPos) {
     return yPos >= 0 && yPos <= canvas.getHeight();
   };
 
@@ -20,9 +20,9 @@ var Animator = function($object, entrySide, canvas, callbacks) {
     target.remove();
   };
 
-  var addFinishing = function($obj, objTimeLine) {
+  var addFinishing = function ($obj, objTimeLine) {
     objTimeLine.add({
-      complete: function(animation) {
+      complete: function (animation) {
         // order of completion will be same as order in which they were created. So this should work.
         allObjTimeLines.pop();
         setTimeout(function () {
@@ -33,19 +33,19 @@ var Animator = function($object, entrySide, canvas, callbacks) {
     })
   };
 
-  var nextPathForTopEntry = function() {
+  var nextPathForTopEntry = function () {
     // console.log("next path for Top");
     var objTimeLine = anime.timeline({
       targets: "." + $object.target,
       loop: loop,
       direction: direction,
       easing: easing,
-      delay: 3000,
-      run: function(anim) {
-        if(callbacks && callbacks.runCallback){
+      delay: 3000, duration: 1000,
+      run: _.throttle(function (anim) {
+        if (callbacks && callbacks.runCallback) {
           callbacks.runCallback($object.target, anim);
         }
-      }
+      }, 500)
     });
     var xPos = $object.xPos;
     var yPos = $object.yPos;
@@ -56,7 +56,7 @@ var Animator = function($object, entrySide, canvas, callbacks) {
       objTimeLine.add({
         translateY: yPos,
         translateX: anime.random(-canvas.getWidth() / 3, canvas.getWidth() / 3),
-        complete: function(animation) {
+        complete: function (animation) {
           updateCounts();
         }
       });
@@ -65,19 +65,19 @@ var Animator = function($object, entrySide, canvas, callbacks) {
     window.allObjTimeLines.push(objTimeLine);
   };
 
-  var nextPathForRightEntry = function() {
+  var nextPathForRightEntry = function () {
     // console.log("next path for Right");
     var objTimeLine = anime.timeline({
       targets: "." + $object.target,
       loop: loop,
       direction: direction,
       easing: easing,
-      delay: 3000,
-      run: function(anim) {
-        if(callbacks && callbacks.runCallback){
+      delay: 3000, duration: 1000,
+      run: _.throttle(function (anim) {
+        if (callbacks && callbacks.runCallback) {
           callbacks.runCallback($object.target, anim);
         }
-      }
+      }, 500)
     });
     var xPos = 0;
     var yPos = $object.yPos;
@@ -87,7 +87,7 @@ var Animator = function($object, entrySide, canvas, callbacks) {
       objTimeLine.add({
         translateY: anime.random(-canvas.getHeight() / 3, canvas.getHeight() / 3),
         translateX: xPos,
-        complete: function(animation) {
+        complete: function (animation) {
           updateCounts();
         }
       });
@@ -96,19 +96,19 @@ var Animator = function($object, entrySide, canvas, callbacks) {
     window.allObjTimeLines.push(objTimeLine);
   };
 
-  var nextPathForBottomEntry = function() {
+  var nextPathForBottomEntry = function () {
     // console.log("next path for Bottom");
     var objTimeLine = anime.timeline({
       targets: "." + $object.target,
       loop: loop,
       direction: direction,
       easing: easing,
-      delay: 3000,
-      run: function(anim) {
-        if(callbacks && callbacks.runCallback){
+      delay: 3000, duration: 1000,
+      run: _.throttle(function (anim) {
+        if (callbacks && callbacks.runCallback) {
           callbacks.runCallback($object.target, anim);
         }
-      }
+      }, 500)
     });
     var xPos = $object.xPos;
     var yPos = 0;
@@ -119,7 +119,7 @@ var Animator = function($object, entrySide, canvas, callbacks) {
       objTimeLine.add({
         translateY: yPos,
         translateX: anime.random(-canvas.getHeight() / 3, canvas.getHeight() / 3),
-        complete: function(animation) {
+        complete: function (animation) {
           updateCounts();
         }
       });
@@ -128,19 +128,19 @@ var Animator = function($object, entrySide, canvas, callbacks) {
     window.allObjTimeLines.push(objTimeLine);
   };
 
-  var nextPathForLeftEntry = function() {
+  var nextPathForLeftEntry = function () {
     // console.log("next path for Left");
     var objTimeLine = anime.timeline({
       targets: "." + $object.target,
       loop: loop,
       direction: direction,
       easing: easing,
-      delay: 3000,
-      run: function(anim) {
-        if(callbacks && callbacks.runCallback){
+      delay: 3000, duration: 1000,
+      run: _.throttle(function (anim) {
+        if (callbacks && callbacks.runCallback) {
           callbacks.runCallback($object.target, anim);
         }
-      }
+      }, 500)
     });
     var xPos = $object.xPos;
     var yPos = $object.yPos;
@@ -151,7 +151,7 @@ var Animator = function($object, entrySide, canvas, callbacks) {
       objTimeLine.add({
         translateY: anime.random(-canvas.getWidth() / 3, canvas.getWidth() / 3),
         translateX: xPos,
-        complete: function(animation) {
+        complete: function (animation) {
           updateCounts();
         }
       });
@@ -167,7 +167,7 @@ var Animator = function($object, entrySide, canvas, callbacks) {
     'Left': nextPathForLeftEntry
   };
 
-  var setInitialPositionFor = function($obj) {
+  var setInitialPositionFor = function ($obj) {
     var yPos = 0,
       xPos = 0;
     if (entrySide == 'Top') {
@@ -197,23 +197,23 @@ var Animator = function($object, entrySide, canvas, callbacks) {
   };
 
   return {
-    setInitialPosition: function($obj) {
+    setInitialPosition: function ($obj) {
       setInitialPositionFor($obj);
     },
-    next: function() {
+    next: function () {
       NextPathMapping[entrySide].call();
     },
-    pause: function() {
-      window.allObjTimeLines.forEach(function(objTimeLine) {
-        if(objTimeLine) {
+    pause: function () {
+      window.allObjTimeLines.forEach(function (objTimeLine) {
+        if (objTimeLine) {
           objTimeLine.pause()
         }
       });
     },
 
-    play: function() {
-      window.allObjTimeLines.forEach(function(objTimeLine) {
-        if(objTimeLine) objTimeLine.play();
+    play: function () {
+      window.allObjTimeLines.forEach(function (objTimeLine) {
+        if (objTimeLine) objTimeLine.play();
       });
     }
   };

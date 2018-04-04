@@ -24,6 +24,20 @@ function arrayRemove(array, element) {
   array.splice(index, 1);
 }
 
+
+function getAdjustedCoordinates(obj) {
+  var rect = obj.getBoundingClientRect();
+
+  var width = (rect.right - rect.left);
+  var height = (rect.bottom - rect.top);
+  return {
+    left: rect.left + width / 5,
+    right: rect.right - width / 5,
+    top: rect.top + height / 5,
+    bottom: rect.bottom - height / 5
+  };
+}
+
 function getMothCallbacks() {
   var callbacks = {
     runCallback: function (mothEl) {
@@ -32,9 +46,10 @@ function getMothCallbacks() {
       if ($moth.length == 0 || !shouldMothBeEaten($moth)) {
         return;
       }
-      var rect1 = $moth[0].getBoundingClientRect();
+      var rect1 = getAdjustedCoordinates($moth[0]);
       birds.toArray().forEach(function (bird) {
-        var rect2 = bird.getBoundingClientRect();
+        var rect2 = getAdjustedCoordinates(bird);
+
         var overlap = !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom);
         if (overlap) {
           $moth.toggle({
@@ -89,9 +104,10 @@ function getBirdCallbacks() {
       if (bird.length == 0) {
         return;
       }
-      var rect1 = bird[0].getBoundingClientRect();
+      var rect1 = getAdjustedCoordinates(bird[0]);
+
       moths.toArray().forEach(function (moth) {
-        var rect2 = moth.getBoundingClientRect();
+        var rect2 = getAdjustedCoordinates(moth);
         var overlap = !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom);
         var shouldEatIt = shouldMothBeEaten(moth);
 
