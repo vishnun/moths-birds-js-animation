@@ -40,12 +40,13 @@ var Animator = function ($object, entrySide, canvas, callbacks) {
       loop: loop,
       direction: direction,
       easing: easing,
-      delay: 3000, duration: 1000,
+      delay: 3000,
+      duration: window.duration,
       run: _.throttle(function (anim) {
         if (callbacks && callbacks.runCallback) {
           callbacks.runCallback($object.target, anim);
         }
-      }, 500)
+      }, window.duration)
     });
     var xPos = $object.xPos;
     var yPos = $object.yPos;
@@ -72,12 +73,13 @@ var Animator = function ($object, entrySide, canvas, callbacks) {
       loop: loop,
       direction: direction,
       easing: easing,
-      delay: 3000, duration: 1000,
+      delay: 3000,
+      duration: window.duration,
       run: _.throttle(function (anim) {
         if (callbacks && callbacks.runCallback) {
           callbacks.runCallback($object.target, anim);
         }
-      }, 500)
+      }, window.duration)
     });
     var xPos = 0;
     var yPos = $object.yPos;
@@ -103,12 +105,13 @@ var Animator = function ($object, entrySide, canvas, callbacks) {
       loop: loop,
       direction: direction,
       easing: easing,
-      delay: 3000, duration: 1000,
+      delay: 3000,
+      duration: window.duration,
       run: _.throttle(function (anim) {
         if (callbacks && callbacks.runCallback) {
           callbacks.runCallback($object.target, anim);
         }
-      }, 500)
+      }, window.duration)
     });
     var xPos = $object.xPos;
     var yPos = 0;
@@ -135,12 +138,13 @@ var Animator = function ($object, entrySide, canvas, callbacks) {
       loop: loop,
       direction: direction,
       easing: easing,
-      delay: 3000, duration: 1000,
+      delay: 3000,
+      duration: window.duration,
       run: _.throttle(function (anim) {
         if (callbacks && callbacks.runCallback) {
           callbacks.runCallback($object.target, anim);
         }
-      }, 500)
+      }, window.duration)
     });
     var xPos = $object.xPos;
     var yPos = $object.yPos;
@@ -196,6 +200,23 @@ var Animator = function ($object, entrySide, canvas, callbacks) {
     });
   };
 
+  function setSpeedControls() {
+    $('#faster').on('click', function () {
+      window.duration = window.duration - 200;
+      if (window.duration < 400) {
+        window.duration = 400;
+      }
+    });
+
+    $('#slower').on('click', function () {
+      window.duration = window.duration + 200;
+      if (window.duration > 4000) {
+        window.duration = 4000;
+      }
+    });
+  }
+
+  setSpeedControls();
   return {
     setInitialPosition: function ($obj) {
       setInitialPositionFor($obj);

@@ -1,9 +1,10 @@
 var MothApp = function (beforeIndustrialRevolution) {
   beforeIndustrialRevolution = beforeIndustrialRevolution == undefined ? true : beforeIndustrialRevolution;
-  var creationInterval = 200; // millisecond
   var mothCreator, birdCreator;
   var timer;
   var $bird = $('.bird');
+  window.creationInterval = 500; // millisecond
+  window.duration = 1000;
 
   function resetMoths() {
     $('.moth').remove();
@@ -19,6 +20,7 @@ var MothApp = function (beforeIndustrialRevolution) {
     window.allObjTimeLines = [];
     window.paused = true;
     window.timeInSeconds = 0;
+    window.duration = 1000;
 
     window.clearInterval(mothCreator);
     window.clearInterval(birdCreator);
@@ -39,6 +41,10 @@ var MothApp = function (beforeIndustrialRevolution) {
 
     reset();
 
+
+    $('#faster, #slower').on('click', function () {
+      window.creationInterval = window.duration / 2;
+    });
 
     $('#ir-range').on('input', function () {
       var rangeEl = $(this);
@@ -73,7 +79,7 @@ var MothApp = function (beforeIndustrialRevolution) {
         if (!window.paused) {
           moth.playAnime();
         }
-      }, creationInterval);
+      }, window.creationInterval);
 
       birdCreator = window.setInterval(function () {
         bird = new Bird();
@@ -81,7 +87,7 @@ var MothApp = function (beforeIndustrialRevolution) {
         if (!window.paused) {
           bird.playAnime();
         }
-      }, creationInterval * 8);
+      }, window.creationInterval * 8);
 
     });
 

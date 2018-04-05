@@ -31,4 +31,7 @@ $(function (argument) {
     initiateMothApp(beforeIndustrialRevolution);
   });
 
+
+//  Debug mode
+  $('#before-IR-btn').click();
 });
