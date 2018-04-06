@@ -46,7 +46,7 @@ var Animator = function ($object, entrySide, canvas, callbacks) {
         if (callbacks && callbacks.runCallback) {
           callbacks.runCallback($object.target, anim);
         }
-      }, window.duration)
+      }, window.duration * 0.8)
     });
     var xPos = $object.xPos;
     var yPos = $object.yPos;
@@ -79,7 +79,7 @@ var Animator = function ($object, entrySide, canvas, callbacks) {
         if (callbacks && callbacks.runCallback) {
           callbacks.runCallback($object.target, anim);
         }
-      }, window.duration)
+      }, window.duration * 0.8)
     });
     var xPos = 0;
     var yPos = $object.yPos;
@@ -111,7 +111,7 @@ var Animator = function ($object, entrySide, canvas, callbacks) {
         if (callbacks && callbacks.runCallback) {
           callbacks.runCallback($object.target, anim);
         }
-      }, window.duration)
+      }, window.duration * 0.6)
     });
     var xPos = $object.xPos;
     var yPos = 0;
@@ -144,7 +144,7 @@ var Animator = function ($object, entrySide, canvas, callbacks) {
         if (callbacks && callbacks.runCallback) {
           callbacks.runCallback($object.target, anim);
         }
-      }, window.duration)
+      }, window.duration * 0.8)
     });
     var xPos = $object.xPos;
     var yPos = $object.yPos;
@@ -199,24 +199,7 @@ var Animator = function ($object, entrySide, canvas, callbacks) {
       'top': yPos
     });
   };
-
-  function setSpeedControls() {
-    $('#faster').on('click', function () {
-      window.duration = window.duration - 200;
-      if (window.duration < 400) {
-        window.duration = 400;
-      }
-    });
-
-    $('#slower').on('click', function () {
-      window.duration = window.duration + 200;
-      if (window.duration > 4000) {
-        window.duration = 4000;
-      }
-    });
-  }
-
-  setSpeedControls();
+  
   return {
     setInitialPosition: function ($obj) {
       setInitialPositionFor($obj);

@@ -6,6 +6,25 @@ var MothApp = function (beforeIndustrialRevolution) {
   window.creationInterval = 500; // millisecond
   window.duration = 1000;
 
+  function setSpeedControls() {
+    $('#faster').on('click', function () {
+      window.duration = window.duration - 200;
+      if (window.duration < 400) {
+        window.duration = 400;
+      }
+    });
+
+    $('#slower').on('click', function () {
+      window.duration = window.duration + 200;
+      if (window.duration > 4000) {
+        window.duration = 4000;
+      }
+    });
+  }
+
+  setSpeedControls();
+
+
   function resetMoths() {
     $('.moth').remove();
     updateCounts();
