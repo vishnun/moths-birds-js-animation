@@ -24,6 +24,9 @@ $(function (argument) {
 
   $('#show-chart').on('click', function () {
     $('#chartContainer').toggleClass('hidden');
+    if(window.plotter) {
+      window.plotter.plot();
+    }
   });
 
   $('#after-IR-btn').on('click', function () {

@@ -61,7 +61,6 @@ var MothApp = function (beforeIndustrialRevolution) {
   }
 
   function init() {
-
     var moth, bird;
     // Used in update counts to update the chart.
     window.plotter = new ChartPlotter();
@@ -93,6 +92,7 @@ var MothApp = function (beforeIndustrialRevolution) {
     });
 
     $('#start-btn').on('click', function () {
+      window.plotter.plot();
       updateCounts();
       window.paused = false;
 

@@ -42,7 +42,11 @@
                 <span class="moth-count light-moth-count">0</span><span>%</span>
                 <p class="label light-label text-center">Light Moths population percentage</p>
             </div>
-            <div class="count-block">
+            <div class="count-block" style="overflow: hidden; background: white;">
+                <button class="btn default-btn" id="show-chart">Show/Hide Chart</button>
+                <div id="chartContainer" style="height: 200px; width:100%;"></div>
+            </div>
+            <div class="count-block hidden">
                 <span class="age">0</span><span> years</span>
                 <p class="label light-default text-center">TIME </p>
             </div>
@@ -85,9 +89,6 @@
                     <button id="faster" style="font-size: 20px;border-radius: 5px;outline: none;">+</button>
                 </div>
             </div>
-            <div class="count-block">
-                <button class="btn default-btn" id="show-chart">Show Chart</button>
-            </div>
         </div>
 
     </div>
@@ -98,10 +99,6 @@
         </div>
     </div>
 
-</div>
-
-<div class="text-center">
-    <div id="chartContainer" class="hidden" style="height: 370px; width:100%;"></div>
 </div>
 
 <script type="text/javascript" src="js/lib/jquery-3.2.1.min.js"></script>

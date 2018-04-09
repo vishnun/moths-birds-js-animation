@@ -2,24 +2,40 @@ function ChartPlotter() {
   var dps = []; // dataPoints
   var dpsLightMoth = [];
   var dpsDarkMoth = [];
-  var chart = new CanvasJS.Chart("chartContainer", {
-    title: {
-      text: "Percentage of Moths."
-    },
-    axisY: {
-      includeZero: false
-    },
-    data: [{
-      type: "line",
-      dataPoints: dpsLightMoth,
-      lineColor: "lightblue"
-    }, {
-      type: "line",
-      dataPoints: dpsDarkMoth,
-      lineColor: "black",
-      color: "black"
-    }]
-  });
+  var chart;
+  var plotChart = function () {
+    chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      title: {
+        text: "Percentage of Moths."
+      },
+      axisY: {
+        includeZero: true,
+        suffix: " %"
+      },
+      legend: {
+        cursor: "pointer",
+        fontSize: 16
+      },
+      data: [{
+        name: 'Light Moths',
+        type: "spline",
+        dataPoints: dpsLightMoth,
+        showInLegend: true,
+        lineColor: "lightblue",
+        markerSize: 0
+      }, {
+        name: 'Dark Moths',
+        type: "spline",
+        dataPoints: dpsDarkMoth,
+        showInLegend: true,
+        lineColor: "black",
+        markerSize: 0,
+        color: "black"
+      }]
+    });
+  };
+
 
   var xVal = 0;
   var yVal = 100;
@@ -50,13 +66,18 @@ function ChartPlotter() {
       dpsDarkMoth.shift();
     }
 
-    chart.render();
+    if(chart){
+      chart.render();
+    }
   };
 
   return {
     reset: function () {
-      chart.destroy();
+      if(chart) {
+        chart.destroy();
+      }
     },
+    plot: plotChart,
     update: updateChart
   }
 }
