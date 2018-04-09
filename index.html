@@ -62,7 +62,16 @@
                     <span class="right-label">After IR</span>
                 </div>
             </div>
-            <div class="count-block">
+             <div class="text-center count-block range-container">
+                <p>Use the control to slow down the simulation. Note: The simulation will not slow down instantly. It will gradually slow down.</p>
+                <div class="range-field">
+                    <span class="left-label">Slower</span>
+                    <input style="direction: rtl; width: -webkit-fill-available;" type="range" id="speed-range" min="400" max="2000" step="-200" value="1000">
+                    <span class="right-label">Faster</span>
+                </div>
+            </div>
+
+            <div class="count-block hidden">
                 <p class=" text-center label">Use these controls to change the speed of simulation.</p>
                 <div class="speed-field">
                     <button id="slower" style="font-size: 20px;border-radius: 5px;outline: none;">-</button>

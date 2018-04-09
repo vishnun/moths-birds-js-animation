@@ -7,6 +7,7 @@ var MothApp = function (beforeIndustrialRevolution) {
   window.duration = 1000;
 
   function setSpeedControls() {
+    // When using the buttons
     $('#faster').on('click', function () {
       window.duration = window.duration - 200;
       if (window.duration < 400) {
@@ -20,7 +21,14 @@ var MothApp = function (beforeIndustrialRevolution) {
         window.duration = 4000;
       }
     });
+
+    //  When Using the slider
+    $('#speed-range').on('input, change', function () {
+      window.duration = $(this).val();
+    });
   }
+
+
 
   setSpeedControls();
 
