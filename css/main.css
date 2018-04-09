@@ -49,6 +49,7 @@ html, body {
 }
 
 .count-block {
+  position: relative;
   margin-top: 20px;
   margin-bottom: 20px;
   border-top: 1px solid #ccc;
@@ -201,6 +202,24 @@ html, body {
 
 .before-ir .dark-moth {
   background-image: url('../images/dark-moth.png');
+}
+
+.dark-moth-preview, .light-moth-preview {
+  position: absolute;
+  width: 100px;
+  height: 39px;
+  background-size: contain;
+  left: 20px;
+  top: 40px;
+  background-repeat: no-repeat;
+}
+
+.dark-moth-preview {
+  background-image: url('../images/dark-moth.png');
+}
+
+.light-moth-preview {
+  background-image: url('../images/light-moth.png');
 }
 
 .before-ir .dark-moth.flip-vertical {

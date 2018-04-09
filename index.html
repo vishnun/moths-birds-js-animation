@@ -9,9 +9,9 @@
 <body>
 
 <!--<iframe allowfullscreen="true" class="interactive screen-only" data-aspect-ratio="1.92" data-id="47"-->
-        <!--data-iframe-mouseover="false" frameborder="no" id="interactive_47" mozallowfullscreen="true" scrolling="no"-->
-        <!--src="https://lab.concord.org/embeddable.html#interactives/sam/diffusion/2-temperature.json"-->
-        <!--webkitallowfullscreen="true" width="566" height="294.7916666666667"></iframe>-->
+<!--data-iframe-mouseover="false" frameborder="no" id="interactive_47" mozallowfullscreen="true" scrolling="no"-->
+<!--src="https://lab.concord.org/embeddable.html#interactives/sam/diffusion/2-temperature.json"-->
+<!--webkitallowfullscreen="true" width="566" height="294.7916666666667"></iframe>-->
 
 <div class="home">
     <div class="container">
@@ -33,10 +33,12 @@
             <button id="stop-btn" class="btn danger-btn" type="button" name="button">Stop</button>
             <button id="exit-btn" class="btn default-btn" type="button" name="button">EXIT</button>
             <div class="count-block">
+                <div class="dark-moth-preview"></div>
                 <span class="moth-count dark-moth-count">0</span><span>%</span>
                 <p class="label dark-label text-center">Dark Moths population percentage</p>
             </div>
             <div class="count-block">
+                <div class="light-moth-preview"></div>
                 <span class="moth-count light-moth-count">0</span><span>%</span>
                 <p class="label light-label text-center">Light Moths population percentage</p>
             </div>
@@ -62,11 +64,13 @@
                     <span class="right-label">After IR</span>
                 </div>
             </div>
-             <div class="text-center count-block range-container">
-                <p>Use the control to slow down the simulation. Note: The simulation will not slow down instantly. It will gradually slow down.</p>
+            <div class="text-center count-block range-container">
+                <p>Use the control to slow down the simulation. Note: The simulation will not slow down instantly. It
+                    will gradually slow down.</p>
                 <div class="range-field">
                     <span class="left-label">Slower</span>
-                    <input style="direction: rtl; width: -webkit-fill-available;" type="range" id="speed-range" min="400" max="2000" step="-200" value="1000">
+                    <input style="direction: rtl; width: -webkit-fill-available;" type="range" id="speed-range"
+                           min="400" max="2000" step="-200" value="1400">
                     <span class="right-label">Faster</span>
                 </div>
             </div>
